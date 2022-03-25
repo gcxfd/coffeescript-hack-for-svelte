@@ -20,7 +20,7 @@ I look forward to coffee officially adding this syntax.
 #!/usr/bin/env coffee
 
 import CoffeeScript from "coffeescript"
-import hack from '@rmw/coffeescript-hack-for-svelte'
+import hack from '@rmw/coffee-svelte-hack'
 hack CoffeeScript
 
 console.log CoffeeScript.compile(
@@ -51,37 +51,41 @@ console.log CoffeeScript.compile(
 output :
 
 ```
-var i, j, k, l, len, len1, ref, ref1, x;
-
-(() => {});
-
-$ : x = y * 2;
-
-$ : y > 2 ? x += y : x -= y;
-
-$ : {
-  if (x > y) {
-    x = y / 2;
-  } else {
-    x = y + 9;
-  }
-  x += 1;
-}
-
-out:
-
-ref = [1, 2, 3];
-for (k = 0, len = ref.length; k < len; k++) {
-  i = ref[k];
-  ref1 = [4, 5, 6];
-  for (l = 0, len1 = ref1.length; l < len1; l++) {
-    j = ref1[l];
-    console.log(i, j);
-    if (i > 1) {
-      break out;
+(() => {
+  var i, j, k, len, ref, results, x;
+  $ : x = y * 2;
+  $ : y > 2 ? x += y : x -= y;
+  $ : {
+    if (x > y) {
+      x = y / 2;
+    } else {
+      x = y + 9;
     }
+    x += 1;
   }
-}
+  out:
+  ref = [1, 2, 3];
+  results = [];
+  for (k = 0, len = ref.length; k < len; k++) {
+    i = ref[k];
+    results.push((function() {
+      var l, len1, ref1, results1;
+      ref1 = [4, 5, 6];
+      results1 = [];
+      for (l = 0, len1 = ref1.length; l < len1; l++) {
+        j = ref1[l];
+        console.log(i, j);
+        if (i > 1) {
+          results1.push(break out);
+        } else {
+          results1.push(void 0);
+        }
+      }
+      return results1;
+    })());
+  }
+  return results;
+});
 ```
 
 

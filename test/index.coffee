@@ -1,7 +1,7 @@
 #!/usr/bin/env coffee
 
 import CoffeeScript from "coffeescript"
-import hack from '@rmw/coffeescript-hack-for-svelte'
+import hack from '@rmw/coffee-svelte-hack'
 hack CoffeeScript
 
 console.log CoffeeScript.compile(
