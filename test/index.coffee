@@ -19,12 +19,14 @@ y = 0
     x = y+9
   x += 1
 
-:out
-  for i in [1,2,3]
-    for j in [4,5,6]
-      console.log i,j
-      if i > 1
-        break out
+do =>
+  :out
+    for i in [1,2,3]
+      for j in [4,5,6]
+        console.log i,j
+        if i > 1
+          break out
+  return
   """
   bare:true
 )
