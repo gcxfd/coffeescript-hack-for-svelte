@@ -1,4 +1,4 @@
-# @rmw/coffee-svelte-hack
+# @rmw/coffee-label-patch
 
 Make coffeescript support :label syntax, so it can be used for [svelte](https://svelte.dev).
 
@@ -10,7 +10,7 @@ I look forward to coffee officially adding this syntax.
 
 ##  Install
 
-```yarn add @rmw/coffee-svelte-hack ``` or ``` npm install @rmw/coffee-svelte-hack```
+```yarn add @rmw/coffee-label-patch ``` or ``` npm install @rmw/coffee-label-patch```
 
 ## Use
 

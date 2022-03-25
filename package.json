@@ -1,6 +1,6 @@
 {
-  "name": "@rmw/coffee-svelte-hack",
-  "repository": "git@github.com:rmw-lib/coffee-svelte-hack.git",
+  "name": "@rmw/coffee-label-patch",
+  "repository": "git@github.com:rmw-lib/coffee-label-patch.git",
   "version": "0.0.4",
   "exports": {
     ".": "./lib/index.js",

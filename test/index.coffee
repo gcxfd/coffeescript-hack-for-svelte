@@ -1,7 +1,7 @@
 #!/usr/bin/env coffee
 
 import CoffeeScript from "coffeescript"
-import hack from '@rmw/coffee-svelte-hack'
+import hack from '@rmw/coffee-label-patch'
 hack CoffeeScript
 
 console.log CoffeeScript.compile(

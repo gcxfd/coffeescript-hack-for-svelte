@@ -1,6 +1,6 @@
 <!-- 本文件由 ./readme.make.md 自动生成，请不要直接修改此文件 -->
 
-# @rmw/coffee-svelte-hack
+# @rmw/coffee-label-patch
 
 Make coffeescript support :label syntax, so it can be used for [svelte](https://svelte.dev).
 
@@ -12,7 +12,7 @@ I look forward to coffee officially adding this syntax.
 
 ##  Install
 
-```yarn add @rmw/coffee-svelte-hack ``` or ``` npm install @rmw/coffee-svelte-hack```
+```yarn add @rmw/coffee-label-patch ``` or ``` npm install @rmw/coffee-label-patch```
 
 ## Use
 
@@ -20,7 +20,7 @@ I look forward to coffee officially adding this syntax.
 #!/usr/bin/env coffee
 
 import CoffeeScript from "coffeescript"
-import hack from '@rmw/coffee-svelte-hack'
+import hack from '@rmw/coffee-label-patch'
 hack CoffeeScript
 
 console.log CoffeeScript.compile(
