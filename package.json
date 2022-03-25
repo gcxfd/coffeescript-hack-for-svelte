@@ -1,7 +1,7 @@
 {
   "name": "@rmw/coffeescript-hack-for-svelte",
   "repository": "git@github.com:rmw-lib/coffeescript-hack-for-svelte.git",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "exports": {
     ".": "./lib/index.js",
     "./*": "./lib/*"
