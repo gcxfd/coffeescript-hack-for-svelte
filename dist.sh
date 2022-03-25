@@ -6,6 +6,9 @@ cd $_DIR
 
 set -ex
 
+npm run prepare
+npx babel --plugins @babel/plugin-transform-modules-commonjs lib/index.js > lib/index.cjs
+
 version=$(cat package.json|jq -r '.version')
 
 add(){

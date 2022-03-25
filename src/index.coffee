@@ -31,6 +31,26 @@ coffee_label = (code)=>
   li.join '\n'
 
 
+label = (code)=>
+  li = []
+  for line in code.split('\n')
+    s = line.trimStart()
+    indent = line.length - s.length
+    push = (txt)=>
+      li.push ''.padEnd(indent)+txt
+      return
+
+    if s.startsWith 'if (null) { //:'
+      push s[15..]+' : {'
+    else if s.startsWith '$ | ('
+      push '$ : '+s[5...-2]+';'
+    else if s.startsWith '(() => { //:'
+      push s[12..]+' : ({'
+    else
+      li.push line
+  li.join '\n'
+
+
 export default hack_for_svelte = (CoffeeScript)=>
   {compile} = CoffeeScript
   compile.bind CoffeeScript
@@ -40,24 +60,9 @@ export default hack_for_svelte = (CoffeeScript)=>
     #console.log code
     #return
 
-    code = compile code,...args
-
-    # console.log code
-
-    li = []
-    for line in code.split('\n')
-      s = line.trimStart()
-      indent = line.length - s.length
-      push = (txt)=>
-        li.push ''.padEnd(indent)+txt
-        return
-
-      if s.startsWith 'if (null) { //:'
-        push s[15..]+' : {'
-      else if s.startsWith '$ | ('
-        push '$ : '+s[5...-2]+';'
-      else if s.startsWith '(() => { //:'
-        push s[12..]+' : ({'
-      else
-        li.push line
-    li.join '\n'
+    r = compile code,...args
+    if typeof(r) == 'string'
+      return label(r)
+    else
+      r.js = label(r.js)
+      return r

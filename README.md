@@ -48,6 +48,7 @@ do =>
   return
   """
   bare:true
+  #  sourceMap:true
 )
 ```
 
