@@ -8,7 +8,6 @@
       "import": "./lib/index.js"
     }
   },
-  "main": "./lib/js/index.js",
   "files": [
     "lib/*"
   ],
