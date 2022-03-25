@@ -3,8 +3,8 @@
   "repository": "git@github.com:rmw-lib/coffee-label-patch.git",
   "version": "0.0.8",
   "exports": {
-    "require": "./lib/index.cjs",
-    "import": "./lib/index.js"
+    "require": "./lib/js/index.js",
+    "import": "./lib/es/index.js"
   },
   "files": [
     "lib/*"
@@ -13,7 +13,7 @@
   "license": "AGPL-3.0",
   "type": "module",
   "scripts": {
-    "prepare": "rm -rf lib && rsync -av --include='*/' --include='*.js' --include='*.mjs' --exclude=* src/ lib/ && npx coffee --compile --output lib src/ && npx md-include .markdown.json"
+    "prepare": "rm -rf lib && mkdir -p lib/es && rsync -av --include='*/' --include='*.js' --include='*.mjs' --exclude=* src/ lib/es && npx coffee --compile --output lib/es src/ && babel --plugins @babel/plugin-transform-modules-commonjs lib/es/* -d lib/js && npx md-include .markdown.json"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
