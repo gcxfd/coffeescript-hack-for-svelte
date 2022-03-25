@@ -1,6 +1,6 @@
 # @rmw/coffee-label-patch
 
-Make coffeescript support :label syntax (similar to livescript) so that it can be used for [svelte](https://svelte.dev).
+Make coffeescript support :label syntax (similar to [livescript](https://livescript.net)) so that it can be used for [svelte](https://svelte.dev).
 
 It's too hard to modify the compiler based on lex, ast, and I did this based on string substitution.
 
