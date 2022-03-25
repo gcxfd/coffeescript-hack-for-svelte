@@ -24,6 +24,7 @@ console.log CoffeeScript.compile(
       console.log i,j
       if i > 1
         break out
+  return
   """
   bare:true
 )

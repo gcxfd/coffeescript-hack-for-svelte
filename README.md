@@ -1,6 +1,6 @@
 <!-- 本文件由 ./readme.make.md 自动生成，请不要直接修改此文件 -->
 
-# @rmw/coffeescript-hack-for-svelte
+# @rmw/coffee-svelte-hack
 
 Make coffeescript support :label syntax, so it can be used for [svelte](https://svelte.dev).
 
@@ -12,7 +12,7 @@ I look forward to coffee officially adding this syntax.
 
 ##  Install
 
-```yarn add @rmw/coffeescript-hack-for-svelte ``` or ``` npm install @rmw/coffeescript-hack-for-svelte```
+```yarn add @rmw/coffee-svelte-hack ``` or ``` npm install @rmw/coffee-svelte-hack```
 
 ## Use
 
@@ -43,6 +43,7 @@ console.log CoffeeScript.compile(
       console.log i,j
       if i > 1
         break out
+  return
   """
   bare:true
 )
@@ -50,9 +51,9 @@ console.log CoffeeScript.compile(
 
 output :
 
-```
+```js
 (() => {
-  var i, j, k, len, ref, results, x;
+  var i, j, k, l, len, len1, ref, ref1, x;
   $ : x = y * 2;
   $ : y > 2 ? x += y : x -= y;
   $ : {
@@ -65,26 +66,17 @@ output :
   }
   out:
   ref = [1, 2, 3];
-  results = [];
   for (k = 0, len = ref.length; k < len; k++) {
     i = ref[k];
-    results.push((function() {
-      var l, len1, ref1, results1;
-      ref1 = [4, 5, 6];
-      results1 = [];
-      for (l = 0, len1 = ref1.length; l < len1; l++) {
-        j = ref1[l];
-        console.log(i, j);
-        if (i > 1) {
-          results1.push(break out);
-        } else {
-          results1.push(void 0);
-        }
+    ref1 = [4, 5, 6];
+    for (l = 0, len1 = ref1.length; l < len1; l++) {
+      j = ref1[l];
+      console.log(i, j);
+      if (i > 1) {
+        break out;
       }
-      return results1;
-    })());
+    }
   }
-  return results;
 });
 ```
 
