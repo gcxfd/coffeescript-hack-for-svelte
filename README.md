@@ -16,7 +16,7 @@ I look forward to coffee officially adding this syntax.
 
 ## Use
 
-```
+```coffee
 #!/usr/bin/env coffee
 
 import CoffeeScript from "coffeescript"

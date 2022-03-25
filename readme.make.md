@@ -14,7 +14,7 @@ I look forward to coffee officially adding this syntax.
 
 ## Use
 
-```
+```coffee
 #include ./test/index.coffee
 ```
 
