@@ -8,6 +8,10 @@ specifiers:
   '@rmw/console': ^0.0.20
   '@rmw/md-include': ^0.4.8
   coffeescript: ^2.6.1
+  link: ^0.1.5
+
+dependencies:
+  link: 0.1.5
 
 devDependencies:
   '@babel/cli': 7.17.6_@babel+core@7.17.8
@@ -672,6 +676,12 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
     dev: true
+
+  /link/0.1.5:
+    resolution: {integrity: sha1-f8eqW9P2rFoZxSVaI/QgfWhS6S4=}
+    engines: {node: '> 0.4.x < 0.9.0'}
+    hasBin: true
+    dev: false
 
   /load-json-file/4.0.0:
     resolution: {integrity: sha1-L19Fq5HjMhYjT9U62rZo607AmTs=}

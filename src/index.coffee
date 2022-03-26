@@ -51,10 +51,10 @@ label = (code)=>
   li.join '\n'
 
 
-export default hack_for_svelte = (CoffeeScript)=>
+export coffee_label_patch = (CoffeeScript)=>
   {compile} = CoffeeScript
   compile.bind CoffeeScript
-  CoffeeScript.compile = (code, ...args)=>
+  (code, ...args)=>
     code = coffee_label code
 
     #console.log code
@@ -66,3 +66,6 @@ export default hack_for_svelte = (CoffeeScript)=>
     else
       r.js = label(r.js)
       return r
+
+export default hack_for_svelte = (CoffeeScript)=>
+  CoffeeScript.compile = compile CoffeeScript
