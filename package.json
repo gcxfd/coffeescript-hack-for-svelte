@@ -26,7 +26,5 @@
     "@rmw/md-include": "^0.4.8",
     "coffeescript": "^2.6.1"
   },
-  "dependencies": {
-    "link": "^0.1.5"
-  }
+  "dependencies": {}
 }
