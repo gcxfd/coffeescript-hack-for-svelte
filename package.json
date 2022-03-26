@@ -1,7 +1,7 @@
 {
   "name": "@rmw/coffee-label-patch",
   "repository": "git@github.com:rmw-lib/coffee-label-patch.git",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "exports": {
     ".": {
       "require": "./lib/index.cjs",
