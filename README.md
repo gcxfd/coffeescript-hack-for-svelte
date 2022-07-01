@@ -22,7 +22,6 @@ Expect coffee to officially add this syntax.
 import CoffeeScript from "coffeescript"
 import hack from '@rmw/coffee-label-patch'
 hack CoffeeScript
-
 console.log CoffeeScript.compile(
   """
 y = 0
@@ -37,6 +36,14 @@ y = 0
   else
     x = y+9
   x += 1
+
+:$ var_undefined
+
+:$ func = => 1
+
+:$ func = ->
+  1
+  2
 
 do =>
   :out

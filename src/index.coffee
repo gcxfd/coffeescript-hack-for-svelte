@@ -43,7 +43,14 @@ label = (code)=>
     if s.startsWith 'if (null) { //:'
       push s[15..]+' : {'
     else if s.startsWith '$ | ('
-      push '$ : '+s[5...-2]+';'
+      s = s[5..]
+      if s.indexOf('function(') > 0 or s.indexOf('=>') > 0
+        txt = s
+      else
+        txt = s[...-2]+';'
+      push '$ : '+txt
+    else if s.startsWith '$ | '
+      push '$ : var '+s[4..]
     else if s.startsWith '(() => { //:'
       push s[12..]+' : ({'
     else
@@ -68,4 +75,4 @@ export coffee_label_patch = (CoffeeScript)=>
       return r
 
 export default hack_for_svelte = (CoffeeScript)=>
-  CoffeeScript.compile = compile CoffeeScript
+  CoffeeScript.compile = coffee_label_patch CoffeeScript
