@@ -50,7 +50,8 @@ label = (code)=>
         txt = s[1...-2]+';'
       push '$ : '+txt
     else if s.startsWith '$ | '
-      push '$ : var '+s[4..]
+      varname = s[4..]
+      push "var #{varname} $ : #{varname}"
     else if s.startsWith '(() => { //:'
       push s[12..]+' : ({'
     else
