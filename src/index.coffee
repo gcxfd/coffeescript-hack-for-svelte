@@ -43,11 +43,11 @@ label = (code)=>
     if s.startsWith 'if (null) { //:'
       push s[15..]+' : {'
     else if s.startsWith '$ | ('
-      s = s[5..]
+      s = s[4..]
       if s.indexOf('function(') > 0 or s.indexOf('=>') > 0
         txt = s
       else
-        txt = s[...-2]+';'
+        txt = s[1...-2]+';'
       push '$ : '+txt
     else if s.startsWith '$ | '
       push '$ : var '+s[4..]
