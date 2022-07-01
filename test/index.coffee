@@ -18,7 +18,8 @@ y = 0
     x = y+9
   x += 1
 
-:$ var_undefined
+do =>
+  + a,b
 
 :$ func = => 1
 

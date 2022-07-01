@@ -22,12 +22,18 @@ coffee_label = (code)=>
       else
         pre_indent = indent
         pre = line
+    else if s.startsWith('+ ')
+      s = s[2..].split(',').map((i)=>i.trim()).filter(Boolean)
+      indent = ''.padEnd indent
+      for i in s
+        li.push indent+i+'=`undefined`#🗑'
     else
       for word from ['break ','continue ']
         if s.startsWith(word)
           li.push line.replace(word,'`'+word)+'`'
           `continue OUT`
       li.push line
+
   li.join '\n'
 
 
@@ -40,6 +46,9 @@ label = (code)=>
       li.push ''.padEnd(indent)+txt
       return
 
+    if s.endsWith ' = undefined; //🗑'
+      continue
+
     if s.startsWith 'if (null) { //:'
       push s[15..]+' : {'
     else if s.startsWith '$ | ('
@@ -49,9 +58,6 @@ label = (code)=>
       else
         txt = s[1...-2]+';'
       push '$ : '+txt
-    else if s.startsWith '$ | '
-      varname = s[4..]
-      push "var #{varname} $ : #{varname}"
     else if s.startsWith '(() => { //:'
       push s[12..]+' : ({'
     else
@@ -64,9 +70,6 @@ export coffee_label_patch = (CoffeeScript)=>
   compile.bind CoffeeScript
   (code, ...args)=>
     code = coffee_label code
-
-    #console.log code
-    #return
 
     r = compile code,...args
     if typeof(r) == 'string'
