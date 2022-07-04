@@ -35,6 +35,10 @@ do =>
         if i > 1
           break out
   return
+
+< x
+< x = 1
+
   """
   bare:true
   #  sourceMap:true

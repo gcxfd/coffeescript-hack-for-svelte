@@ -22,17 +22,23 @@ coffee_label = (code)=>
       else
         pre_indent = indent
         pre = line
-    else if s.startsWith('+ ')
-      s = s[2..].split(',').map((i)=>i.trim()).filter(Boolean)
-      indent = ''.padEnd indent
-      for i in s
-        li.push indent+i+'=`undefined`#🗑'
     else
-      for word from ['break ','continue ']
-        if s.startsWith(word)
-          li.push line.replace(word,'`'+word)+'`'
-          `continue OUT`
-      li.push line
+      c0 = s.charAt(0)
+      if (~ '+<'.indexOf(c0)) and ' ' == s.charAt(1)
+        s = s[2..].split(',').map((i)=>i.trim()).filter(Boolean)
+        indent = ''.padEnd indent
+        for i in s
+          if i.indexOf('=') < 0
+            i += '=`undefined`#'+c0
+          if c0 == '<'
+            i = 'export '+i
+          li.push indent+i
+      else
+        for word from ['break ','continue ']
+          if s.startsWith(word)
+            li.push line.replace(word,'`'+word)+'`'
+            `continue OUT`
+        li.push line
 
   li.join '\n'
 
@@ -46,10 +52,11 @@ label = (code)=>
       li.push ''.padEnd(indent)+txt
       return
 
-    if s.endsWith ' = undefined; //🗑'
+    if s.endsWith ' = undefined; //+'
       continue
-
-    if s.startsWith 'if (null) { //:'
+    else if s.endsWith ' = undefined; //<'
+      li.push line[..-18]+';'
+    else if s.startsWith 'if (null) { //:'
       push s[15..]+' : {'
     else if s.startsWith '$ | ('
       s = s[4..]
